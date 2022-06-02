@@ -49,28 +49,27 @@ const getData = (event) => {
 
             results.forEach(result => {
                 const div2 = document.createElement('div')
-                div.classList.add('div2')
                 const p = document.createElement('p')
-                p.innerText = result.descriptor
-                div2.appendChild(p)
-
                 const p2 = document.createElement('p');
+                const button = document.createElement('button')
+
+                p.innerText = result.descriptor
+                button.innerText = "What did the Police do?";
                 p2.innerText = result.resolution_description;
                 p2.style.display = 'none';
-                p.appendChild(p2)
 
-                const button = document.createElement('button')
-                button.innerText = "What did the Police do?";
+                p.appendChild(p2)
+                div2.appendChild(p)
+                div2.appendChild(button)
+                div.appendChild(div2)
+
                 button.addEventListener('click', (e) => {
                     if (p2.style.display === 'none') {
                         p2.style.display = 'block';
                     } else {
                         p2.style.display = 'none';
                     }
-
                 })
-                div2.appendChild(button)
-                div.appendChild(div2)
             })
         })
         .catch(err => console.log(err))
