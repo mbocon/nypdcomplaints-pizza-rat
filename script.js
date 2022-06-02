@@ -1,31 +1,32 @@
 const form = document.querySelector('form');
 const div = document.querySelector('#div');
 const url = 'https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=';
-const MANHATTAN = document.querySelector('#MANHATTAN')
-const BRONX = document.querySelector('#BRONX')
-const QUEENS = document.querySelector('#QUEENS')
-const BROOKLYN = document.querySelector('#BROOKLYN')
-const STATENISLAND = document.querySelector('#STATENISLAND')
-let BOROUGH;
+const manhattan = document.querySelector('#MANHATTAN')
+const bronx = document.querySelector('#BRONX')
+const queens = document.querySelector('#QUEENS')
+const brooklyn = document.querySelector('#BROOKLYN')
+const sIsland = document.querySelector('#STATENISLAND')
 
-MANHATTAN.addEventListener('click', (e)=>{
-    BOROUGH = 'MANHATTAN'
+let borough;
+
+manhattan.addEventListener('click', (e)=>{
+    borough = 'MANHATTAN'
 })
 
-BRONX.addEventListener('click', (e)=>{
-    BOROUGH = 'BRONX'
+bronx.addEventListener('click', (e)=>{
+    borough = 'BRONX'
 })
 
-QUEENS.addEventListener('click', (e)=>{
-    BOROUGH = 'QUEENS'
+queens.addEventListener('click', (e)=>{
+    borough = 'QUEENS'
 })
 
-BROOKLYN.addEventListener('click', (e)=>{
-    BOROUGH = 'BROOKLYN'
+brooklyn.addEventListener('click', (e)=>{
+    borough = 'BROOKLYN'
 })
 
-STATENISLAND.addEventListener('click', (e)=>{
-    BOROUGH = 'STATEN ISLAND'
+sIsland.addEventListener('click', (e)=>{
+    borough = 'STATEN ISLAND'
 })
 
 
@@ -33,8 +34,9 @@ const getData = (event) => {
     event.preventDefault()
     div.innerHTML = ''
     let requestedNum = document.querySelector('#input').value;
+    document.querySelector('#input').value = '';
   
-    fetch(url+BOROUGH)
+    fetch(url+borough)
     .then(res => res.json())
     .then(data => {
         let results;
